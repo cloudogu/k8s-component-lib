@@ -11,7 +11,7 @@ MAKEFILES_VERSION=10.4.0
 
 ADDITIONAL_CLEAN=dist-clean
 
-CRD_COMPONENT_SOURCE = ${HELM_CRD_SOURCE_DIR}/templates/k8s.cloudogu.com_dogus.yaml
+CRD_COMPONENT_SOURCE = ${HELM_CRD_SOURCE_DIR}/templates/k8s.cloudogu.com_components.yaml
 CRD_POST_MANIFEST_TARGETS = crd-add-labels crd-copy-for-go-embedding
 
 PRE_COMPILE = generate-deepcopy
@@ -33,8 +33,8 @@ include build/make/release.mk
 
 .PHONY: crd-copy-for-go-embedding
 crd-copy-for-go-embedding:
-	@echo "Copy CRD to api/v2/"
-	@cp ${CRD_COMPONENT_SOURCE} api/v2/
+	@echo "Copy CRD to api/v1/"
+	@cp ${CRD_COMPONENT_SOURCE} api/v1/
 
 # Override make target to use k8s-component-lib as label
 .PHONY: crd-add-labels
@@ -44,3 +44,9 @@ crd-add-labels: $(BINARY_YQ)
 		$(BINARY_YQ) -i e ".metadata.labels.app = \"ces\"" $${file} ;\
 		$(BINARY_YQ) -i e ".metadata.labels.\"app.kubernetes.io/name\" = \"${PROJECT_NAME}\"" $${file} ;\
 	done
+
+# Override make target to use mockery v2
+.PHONY: mocks
+mocks: ${MOCKERY_BIN} ## target is used to generate mocks for all interfaces in a project.
+	${MOCKERY_BIN}
+	@echo "Mocks successfully created."
