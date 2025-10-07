@@ -63,7 +63,6 @@ const (
 	AvailableHealthStatus   HealthStatus = "available"
 	UnavailableHealthStatus HealthStatus = "unavailable"
 	UnknownHealthStatus     HealthStatus = "unknown"
-	mappingMetadataFileName              = "component-values-metadata.yaml"
 )
 
 // ComponentStatus defines the observed state of a Component.
@@ -97,22 +96,6 @@ type Component struct {
 
 	Spec   ComponentSpec   `json:"spec,omitempty"`
 	Status ComponentStatus `json:"status,omitempty"`
-}
-
-type Mapping struct {
-	Path    string            `yaml:"path"`
-	Mapping map[string]string `yaml:"Mapping"`
-}
-
-type MetaValue struct {
-	Name        string `yaml:"name"`
-	Description string `yaml:"description"`
-	Keys        []Mapping
-}
-
-type MetadataMapping struct {
-	ApiVersion string               `yaml:"apiVersion"`
-	Metavalues map[string]MetaValue `yaml:"metavalues"`
 }
 
 // String returns a string representation of this component.
