@@ -55,7 +55,6 @@ type ComponentSpec struct {
 	// +optional
 	ValuesYamlOverwrite string `json:"valuesYamlOverwrite,omitempty"`
 	// ValuesConfigRef is used for configuration
-	// TODO
 	// +optional
 	ValuesConfigRef *Reference `json:"valuesConfigRef,omitempty"`
 }
