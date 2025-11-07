@@ -2,7 +2,7 @@
 PROJECT_NAME=k8s-component-lib
 ARTIFACT_ID=k8s-component-operator-crd
 APPEND_CRD_SUFFIX=false
-VERSION=1.11.0
+VERSION=1.12.0
 
 IMAGE=cloudogu/${ARTIFACT_ID}:${VERSION}
 GOTAG=1.25.1
