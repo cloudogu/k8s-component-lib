@@ -54,6 +54,19 @@ type ComponentSpec struct {
 	// It can be used to overwrite specific configurations. Lists are overwritten, maps are merged.
 	// +optional
 	ValuesYamlOverwrite string `json:"valuesYamlOverwrite,omitempty"`
+	// ValuesConfigRef is used for configuration
+	// +optional
+	ValuesConfigRef *Reference `json:"valuesConfigRef,omitempty"`
+}
+
+// Reference points to a value in a Kubernetes configmap
+type Reference struct {
+	// Name is the name of the configmap in the same namespace
+	// +required
+	Name string `json:"name"`
+	// Key is the key within the configmap
+	// +required
+	Key string `json:"key"`
 }
 
 type HealthStatus string
