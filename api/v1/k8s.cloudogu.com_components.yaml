@@ -82,6 +82,19 @@ spec:
                 namespace:
                   description: Namespace of the component (e.g. k8s)
                   type: string
+                valuesConfigRef:
+                  description: ValuesConfigRef is used for configuration
+                  properties:
+                    key:
+                      description: Key is the key within the configmap
+                      type: string
+                    name:
+                      description: Name is the name of the configmap in the same namespace
+                      type: string
+                  required:
+                    - key
+                    - name
+                  type: object
                 valuesYamlOverwrite:
                   description: |-
                     ValuesYamlOverwrite is a multiline-yaml string that is applied alongside the original values.yaml-file of the component.

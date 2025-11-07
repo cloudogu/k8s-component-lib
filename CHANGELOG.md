@@ -5,12 +5,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- [#3] update custom resource definition yaml
 
 ## [v1.12.0] - 2025-11-07
 ### Added
-- [#100] Added a reference to a config map to the component cr
+- [#3] Added a reference to a config map to the component cr
     - config map contains a multiline yaml to overwrite values
-    - 
+
 ## [v1.11.0] - 2025-10-07
 ### Changed
 - [#1] Extracted Component-CRD and associated clients from [k8s-component-operator](https://github.com/cloudogu/k8s-component-operator) to this repository
