@@ -2,12 +2,13 @@
 PROJECT_NAME=k8s-component-lib
 ARTIFACT_ID=k8s-component-operator-crd
 APPEND_CRD_SUFFIX=false
-VERSION=1.14.0
+VERSION=1.15.0
 
 IMAGE=cloudogu/${ARTIFACT_ID}:${VERSION}
-GOTAG=1.26.0
-MAKEFILES_VERSION=10.4.0
-LINT_VERSION=v2.10.1
+GOTAG=1.26.8
+MAKEFILES_VERSION=10.11.1
+LINT_VERSION=v2.13.2
+MOCKERY_VERSION=v2.53.7
 
 ADDITIONAL_CLEAN=dist-clean
 
@@ -30,6 +31,7 @@ include build/make/digital-signature.mk
 include build/make/mocks.mk
 include build/make/k8s-controller.mk
 include build/make/release.mk
+include build/make/vulnerability-scan.mk
 
 .PHONY: crd-copy-for-go-embedding
 crd-copy-for-go-embedding:
